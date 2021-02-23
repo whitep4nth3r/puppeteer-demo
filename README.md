@@ -1,3 +1,9 @@
+<div style="margin: auto; width: 100px">
+
+![Puppeteer logo](./puppeteer.png)
+
+</div>
+
 # How to use Puppeteer to take webpage screenshots and generate dynamic Open Graph images for social sharing
 
 It's no secret that beautiful images shared with your links on social media drive more engagement. Unfortunately, it can be really time-consuming to generate fresh images each time you publish a new blog post. The good news is, we can use a tool called Puppeteer to take screenshots of browser pages
