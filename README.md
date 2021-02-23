@@ -110,7 +110,7 @@ To create dynamic Open Graph images for [my own blog posts](https://whitep4nth3r
 
 The application renders an HTML page based on the title of a blog post or page, which then uses Puppeteer to screenshot the page, and cache it.
 
-The url parameters in the request hold the key to the magic being performed here. Here's a look at the code that generates my dynamic open graph images, [which you can find in full here](https://github.com/whitep4nth3r/p4nth3rblog/blob/main/utils/OpenGraph.js).
+The url parameters in the request hold the key to the magic being performed here. Here's a look at the code that generates my dynamic Open Graph images, [which you can find in full here](https://github.com/whitep4nth3r/p4nth3rblog/blob/main/utils/OpenGraph.js).
 
 ```js
 // Get a random light/dark theme to switch things up
