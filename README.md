@@ -1,8 +1,4 @@
-<div style="margin: auto; width: 100px">
-
 ![Puppeteer logo](./puppeteer.png)
-
-</div>
 
 # How to use Puppeteer to take webpage screenshots and generate dynamic Open Graph images for social sharing
 
