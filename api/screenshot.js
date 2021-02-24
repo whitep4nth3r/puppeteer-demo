@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
 
     // take a screenshot and save it in the screenshots directory
     const file = await page.screenshot({
-      path: `./screenshots/${pageQuery.replace("https://", "")}.png`,
+      type: "png",
     });
 
     // close the browser
@@ -35,6 +35,10 @@ module.exports = async (req, res) => {
 
     res.statusCode = 200;
     res.setHeader("Content-Type", `image/png`);
+    res.setHeader(
+      "Cache-Control",
+      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
+    );
 
     // return the file!
     res.end(file);
