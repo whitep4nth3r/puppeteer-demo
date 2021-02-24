@@ -4,6 +4,9 @@ module.exports = async (req, res) => {
   const pageQuery = req.query.page;
 
   try {
+    console.log("Trying");
+    console.log("pageQuery: ", pageQuery);
+
     if (!pageQuery.includes("https://")) {
       res.statusCode = 404;
       res.json({
@@ -14,6 +17,7 @@ module.exports = async (req, res) => {
     // launch a new headless browser
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    console.log("Browser and page launched");
 
     // set the viewport size
     await page.setViewport({
@@ -21,6 +25,8 @@ module.exports = async (req, res) => {
       height: 1080,
       deviceScaleFactor: 1,
     });
+
+    console.log("Viewport size set");
 
     // tell the page to visit the url
     await page.goto(pageQuery);
@@ -30,8 +36,12 @@ module.exports = async (req, res) => {
       type: "png",
     });
 
+    console.log("File done?");
+
     // close the browser
     await browser.close();
+
+    console.log("Browser closed");
 
     res.statusCode = 200;
     res.setHeader("Content-Type", `image/png`);
