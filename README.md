@@ -159,7 +159,11 @@ Click the button below to deploy your own instance to Vercel to try it out.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fpuppeteer-demo)
 
-The serverless function is available to execute at `https://your-project.vercel.app/api/screenshot?https://example.com`
+The serverless function is available to execute at:
+
+```bash
+https://your-project.vercel.app/api/screenshot?https://example.com`
+```
 
 To see an example of the raw serverless function in action for this repository, visit the following URL in your browser:
 
