@@ -1,23 +1,55 @@
-const puppeteer = require("puppeteer");
+// Shout outs to the following repositories:
+
+// https://github.com/vercel/og-image
+// https://github.com/ireade/netlify-puppeteer-screenshot-demo
+
+const puppeteer = require("puppeteer-core");
+const chrome = require("chrome-aws-lambda");
+
+const exePath =
+  process.platform === "win32"
+    ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    : process.platform === "linux"
+    ? "/usr/bin/google-chrome"
+    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+
+async function getOptions(isDev) {
+  let options;
+  if (isDev) {
+    options = {
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    };
+  } else {
+    options = {
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
+    };
+  }
+  return options;
+}
 
 module.exports = async (req, res) => {
-  const pageQuery = req.query.page;
+  const pageToScreenshot = req.query.page;
+  const isDev = req.query.isDev === "true";
 
   try {
-    console.log("Trying");
-    console.log("pageQuery: ", pageQuery);
-
-    if (!pageQuery.includes("https://")) {
+    if (!pageToScreenshot.includes("https://")) {
       res.statusCode = 404;
       res.json({
         body: "Sorry, we couldn't screenshot that page. Did you include https://?",
       });
     }
 
-    // launch a new headless browser
-    const browser = await puppeteer.launch();
+    // get options for browser
+    const options = await getOptions(isDev);
+
+    // launch a new headless browser with dev / prod options
+    const browser = await puppeteer.launch(options);
+
     const page = await browser.newPage();
-    console.log("Browser and page launched");
 
     // set the viewport size
     await page.setViewport({
@@ -26,22 +58,16 @@ module.exports = async (req, res) => {
       deviceScaleFactor: 1,
     });
 
-    console.log("Viewport size set");
-
     // tell the page to visit the url
-    await page.goto(pageQuery);
+    await page.goto(pageToScreenshot);
 
     // take a screenshot and save it in the screenshots directory
     const file = await page.screenshot({
       type: "png",
     });
 
-    console.log("File done?");
-
     // close the browser
     await browser.close();
-
-    console.log("Browser closed");
 
     res.statusCode = 200;
     res.setHeader("Content-Type", `image/png`);

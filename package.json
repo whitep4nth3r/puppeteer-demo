@@ -10,6 +10,8 @@
     "node": "12.x"
   },
   "dependencies": {
-    "puppeteer": "^7.1.0"
+    "chrome-aws-lambda": "^7.0.0",
+    "puppeteer": "^7.1.0",
+    "puppeteer-core": "^7.1.0"
   }
 }
