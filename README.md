@@ -157,16 +157,41 @@ This repository contains a serverless function in the `/api` directory that can 
 
 Click the button below to deploy your own instance to Vercel to try it out.
 
-The serverless function is available at `https://your-project.vercel.app/api/screenshot`
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fpuppeteer-demo)
 
-Due to quirks with Puppeteer, you'll need to make sure you set your Node version to 12.x in the Vercel settings. [Click here foor more information](https://developers.google.com/web/tools/puppeteer/troubleshooting).
+The serverless function is available to execute at `https://your-project.vercel.app/api/screenshot?https://example.com`
 
-![Set your Node version in Vercel to 12.x](./node12-screenshot.png)
-
-To see an example of the serverless function in action for this repository, visit:
+To see an example of the raw serverless function in action for this repository, visit the following URL in your browser:
 
 ```bash
 https://puppeteer-screenshot-demo.vercel.app/api/screenshot?page=https://whitep4nth3r.com
 ```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fpuppeteer-demo)
+## Node version
+
+Due to some potential quirks with Puppeteer and Node 14, you'll need to set your Node version to 12.x in the Vercel settings. [Click here for more information](https://developers.google.com/web/tools/puppeteer/troubleshooting).
+
+![Set your Node version in Vercel to 12.x](./node12-screenshot.png)
+
+## Puppeteer vs Puppeteer Core
+
+Vercel serverless functions can have a maximum size of 50MB. If you look at the code in `api/screenshot.js` you'll notice that we're using the `puppeteer-core` package instead of `puppeteer` on the server, which comes without any headless browser installed. We also install `chome-aws-lambda` on the server, which is a light version of Chrome, which keeps the function size down.
+
+Additionally, we configure the `puppeteer.launch()` options differently for development and production.
+
+## Developing locally
+
+To run the serverless function locally, you'll need to [install the Vercel CLI.](https://vercel.com/download)
+
+Then, in your terminal:
+
+```bash
+cd puppeteer-demo
+vercel dev
+```
+
+To ensure Puppeteer is passed the correct options for the development environment, pass the query parameter `isDev=true` to the function like so.
+
+```bash
+http://localhost:3000/api/screenshot?page=https://whitep4nth3r.com&isDev=true
+```
