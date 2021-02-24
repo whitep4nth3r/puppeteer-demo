@@ -159,4 +159,10 @@ Click the button below to deploy your own instance to Vercel to try it out.
 
 The serverless function is available at `https://your-project.vercel.app/api/screenshot`
 
+To see an example of the serverless function in action for this repository, visit:
+
+```bash
+https://puppeteer-screenshot-demo.vercel.app/api/screenshot?page=https://whitep4nth3r.com
+```
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fpuppeteer-demo)
