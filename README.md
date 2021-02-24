@@ -21,7 +21,7 @@ Puppeteer uses Node to execute. If you want to host a project using Puppeteer, y
 
 ## Ready to try it out?
 
-Fork this repository from GitHub to your local machine.
+Fork this repository to your GitHub account, and clone it to your local machine using git or the GitHub CLI.
 
 ## Open your terminal and install dependencies
 
@@ -55,35 +55,40 @@ const puppeteer = require("puppeteer");
   // Take the urls from the command line
   var args = process.argv.slice(2);
 
-  // loop over the urls
-  for (let i = 0; i < args.length; i++) {
-    // check the url has a valid protocol
-    if (args[i].includes("https://")) {
-      // launch a new headless browser
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
+  try {
+    // launch a new headless browser
+    const browser = await puppeteer.launch();
 
-      // set the viewport size
-      await page.setViewport({
-        width: 1920,
-        height: 1080,
-        deviceScaleFactor: 1,
-      });
+    // loop over the urls
+    for (let i = 0; i < args.length; i++) {
+      if (args[i].includes("https://")) {
+        const page = await browser.newPage();
 
-      // tell the page to visit the url
-      await page.goto(args[i]);
+        // set the viewport size
+        await page.setViewport({
+          width: 1920,
+          height: 1080,
+          deviceScaleFactor: 1,
+        });
 
-      // take a screenshot and save it in the screenshots directory
-      await page.screenshot({ path: `./screenshots/${args[i].replace("https://", "")}.png` });
+        // tell the page to visit the url
+        await page.goto(args[i]);
 
-      // close the browser
-      await browser.close();
+        // take a screenshot and save it in the screenshots directory
 
-      // done!
-      console.log(`✅ Screenshot of ${args[i]} saved!`);
-    } else {
-      console.error(`❌ Could not save screenshot of ${args[i]}!`);
+        await page.screenshot({ path: `./screenshots/${args[i].replace("https://", "")}.png` });
+
+        // done!
+        console.log(`✅ Screenshot of ${args[i]} saved!`);
+      } else {
+        console.error(`❌ Could not save screenshot of ${args[i]}!`);
+      }
     }
+
+    // close the browser
+    await browser.close();
+  } catch (error) {
+    console.log(error);
   }
 })();
 ```
@@ -145,3 +150,13 @@ function generateImageUrl(title) {
 // And this code calls the generateImageUrl function in the head of my blog pages (which use Next.js)
  <meta property="og:image" content={generateImageUrl(title)} />
 ```
+
+## Deploying a serverless function to Vercel to screenshot a web page
+
+This repository contains a serverless function in the `/api` directory that can take a screenshot of a web page and return it to you in the browser. It works in the same way as described in `demo.js` above and takes a query parameter of `page`.
+
+Click the button below to deploy your own instance to Vercel to try it out.
+
+The serverless function is available at `https://your-project.vercel.app/api/screenshot`
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fpuppeteer-demo)
