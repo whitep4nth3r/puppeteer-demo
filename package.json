@@ -6,6 +6,9 @@
   "author": "whitep4nth3r",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "puppeteer": "^7.1.0"
   }
