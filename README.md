@@ -159,6 +159,10 @@ Click the button below to deploy your own instance to Vercel to try it out.
 
 The serverless function is available at `https://your-project.vercel.app/api/screenshot`
 
+Due to quirks with Puppeteer, you'll need to make sure you set your Node version to 12.x in the Vercel settings. [Click here foor more information](https://developers.google.com/web/tools/puppeteer/troubleshooting).
+
+![Set your Node version in Vercel to 12.x](./node12-screenshot.png)
+
 To see an example of the serverless function in action for this repository, visit:
 
 ```bash
