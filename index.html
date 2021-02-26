@@ -40,20 +40,41 @@
 
   <body>
     <main class="main">
-      <h1 class="heading">Puppeteer demo</h1>
+      <h1 class="heading">Puppeteer Demo</h1>
       <h2 class="subheading">
         How to use Puppeteer to take webpage screenshots and generate dynamic Open Graph images for
         social sharing
       </h2>
 
-      <!-- <form>
-        <input type="url" id="page" aria-label="URL" value="https://whitep4nth3r.com" />
-        <button type="submit">Generate screenshot</button>
-      </form> -->
-
-      <a class="link" target="_blank" rel="nofollow norefferer" href="https://whitep4nth3r.com"
-        >@whitep4nth3r</a
+      <a
+        class="viewOnGitHub"
+        target="_blank"
+        rel="nofollow norefferer"
+        href="https://github.com/whitep4nth3r/puppeteer-demo"
+        >View the code on GitHub</a
       >
+
+      <div class="spinner" data-loader>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+
+      <div class="imageHolder" data-image-holder>
+        <h3 class="imageHolderTitle" data-image-holder-title>
+          Tada! Here's your web page screenshot! 🎉
+        </h3>
+      </div>
+
+      <label class="formLabel" for="urlInput">Enter the url of a web page including https://</label>
+      <input
+        type="url"
+        class="urlInput"
+        name="urlInput"
+        data-url-input
+        aria-label="URL"
+        value="https://whitep4nth3r.com"
+      />
+      <button type="button" data-button class="button">Generate screenshot</button>
     </main>
     <script type="module" src="./browser.js"></script>
   </body>

@@ -3,6 +3,11 @@
 // https://github.com/vercel/og-image
 // https://github.com/ireade/netlify-puppeteer-screenshot-demo
 
+// The maximum execution timeout is 10
+// seconds when deployed on a Personal Account (Hobby plan).
+// For Teams, the execution timeout is 60 seconds (Pro plan)
+// or 900 seconds (Enterprise plan).
+
 const puppeteer = require("puppeteer-core");
 const chrome = require("chrome-aws-lambda");
 
@@ -61,7 +66,7 @@ module.exports = async (req, res) => {
     // tell the page to visit the url
     await page.goto(pageToScreenshot);
 
-    // take a screenshot and save it in the screenshots directory
+    // take a screenshot
     const file = await page.screenshot({
       type: "png",
     });
