@@ -2,7 +2,10 @@
 
 // save image, copy image, view in new tab etc
 
-const isDev = "true";
+
+
+// Change this to "true" if you are developing locally
+const isDev = "false";
 
 const submitButton = document.querySelector("[data-button]");
 const urlInput = document.querySelector("[data-url-input]");
