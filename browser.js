@@ -6,7 +6,7 @@
 const isDev = "false";
 
 // Query the elements we need from the DOM
-const submitButton = document.querySelector("[data-button]");
+const form = document.querySelector("form");
 const urlInput = document.querySelector("[data-url-input]");
 const imageHolder = document.querySelector("[data-image-holder]");
 const imageHolderTitle = document.querySelector("[data-image-holder-title]");
@@ -36,7 +36,8 @@ function hideLoader() {
 }
 
 // Call out to the serverless function on click of the button
-submitButton.addEventListener("click", async (event) => {
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
   clearImageHolder();
   showLoader();
 
