@@ -71,8 +71,9 @@ body {
 
 .imageHolder img {
   width: 100%;
-  border: 0.25rem solid var(--color-tertiary);
+  border: 0.25rem solid var(--color-secondary);
   margin-bottom: 2rem;
+  box-shadow: 0.5rem 0.5rem 0 0 var(--color-foreground);
 }
 
 .imageHolderTitle {
@@ -103,6 +104,19 @@ body {
 
 .urlInput:focus {
   outline: 0.125rem solid var(--color-primary);
+}
+
+.error {
+  display: none;
+  color: var(--color-background);
+  background-color: var(--color-tertiary);
+  padding: 1rem;
+  font-size: 1.8rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  border: 0.25rem solid var(--color-primary);
 }
 
 .button {
