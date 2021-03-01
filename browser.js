@@ -35,7 +35,7 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
-// Call out to the serverless function on click of the button
+// Call out to the serverless function on form submit
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   clearImageHolder();
