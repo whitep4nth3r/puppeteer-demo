@@ -3,7 +3,7 @@
 // save image, copy image, view in new tab etc
 
 // Change this to "true" if you are developing locally
-const isDev = "true";
+const isDev = "false";
 
 // Query the elements we need from the DOM
 const submitButton = document.querySelector("[data-button]");
