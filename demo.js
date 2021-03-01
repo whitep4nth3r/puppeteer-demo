@@ -10,6 +10,8 @@ const puppeteer = require("puppeteer");
 
     // loop over the urls
     for (let i = 0; i < args.length; i++) {
+      
+      // check for https for safety!
       if (args[i].includes("https://")) {
         const page = await browser.newPage();
 
@@ -24,7 +26,6 @@ const puppeteer = require("puppeteer");
         await page.goto(args[i]);
 
         // take a screenshot and save it in the screenshots directory
-
         await page.screenshot({ path: `./screenshots/${args[i].replace("https://", "")}.png` });
 
         // done!

@@ -2,12 +2,13 @@
 
 # How to use Puppeteer to take webpage screenshots and generate dynamic Open Graph images for social sharing
 
-It's no secret that beautiful images shared with your links on social media drive more engagement. Unfortunately, it can be really time-consuming to generate fresh images each time you publish a new blog post. The good news is, we can use a tool called Puppeteer to take screenshots of browser pages
-to generate dynamic images to share on your social media accounts. Let's take a look!
+It's no secret that beautiful images shared with your links on social media drive more engagement. Unfortunately, it can be incredibly time-consuming to generate fresh images each time you publish a new blog post. The good news is, we can use a tool called Puppeteer to take screenshots of browser pages to generate dynamic images to share on your social media accounts.
+
+Let's take a look!
 
 ## What is Puppeteer?
 
-Puppeteer is a Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.
+Puppeteer is a Node library which provides a high-level API to control headless Chrome or Chromium. It can also be configured to use full (non-headless) Chrome or Chromium.
 
 Most things that you can do manually in the browser can be done using Puppeteer!
 
@@ -61,6 +62,8 @@ const puppeteer = require("puppeteer");
 
     // loop over the urls
     for (let i = 0; i < args.length; i++) {
+      
+      // check for https for safety!
       if (args[i].includes("https://")) {
         const page = await browser.newPage();
 
@@ -99,7 +102,7 @@ const puppeteer = require("puppeteer");
 
 [Read more about the Open Graph protocol here.](https://ogp.me/)
 
-Open Graph meta tags are used in the `<head>` of an HTML page to expose information about your web page to social media platforms and other applications that unfurl URL meta data.
+Open Graph meta tags are used in the `<head>` of an HTML page to expose information about web pages to social media platforms and other applications that unfurl URL meta data.
 
 This is an Open Graph meta tag that provides a url to an image that is used to represent the web page.
 
@@ -107,7 +110,7 @@ This is an Open Graph meta tag that provides a url to an image that is used to r
 <meta property="og:image" content="https://example.com/image.png" />
 ```
 
-A great way to harness the power of Puppeteer here, is by calling out to the code that generates and saves a screenshot of a browser page at build time, so when you want to share your newly published page, a screenshot has already been created for you.
+A great way to up your OG image game is to harness the power of Puppeteer by providing a link in your OG image tags that calls out to a serverless function that generates a screenshot of a browser page.
 
 ## How I generated my own dynamic Open Graph images for whitep4nth3r.com
 
@@ -153,7 +156,7 @@ function generateImageUrl(title) {
 
 ## Deploying a serverless function to Vercel to screenshot a web page
 
-This repository contains a serverless function in the `/api` directory that can take a screenshot of a web page and return it to you in the browser. It works in the same way as described in `demo.js` above and takes a query parameter of `page`.
+This repository contains a serverless function in the `/api` directory that takes a screenshot of a web page and returns it the browser. It works in the same way as described in `demo.js` above and takes a query parameter of `page`.
 
 Click the button below to deploy your own instance to Vercel to try it out.
 

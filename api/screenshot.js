@@ -38,9 +38,14 @@ async function getOptions(isDev) {
 
 module.exports = async (req, res) => {
   const pageToScreenshot = req.query.page;
+
+  // pass in this parameter if you are developing locally
+  // to ensure puppeteer picks up your machine installation of
+  // Chrome via the configurable options
   const isDev = req.query.isDev === "true";
 
   try {
+    // check for https for safety!
     if (!pageToScreenshot.includes("https://")) {
       res.statusCode = 404;
       res.json({
@@ -53,7 +58,6 @@ module.exports = async (req, res) => {
 
     // launch a new headless browser with dev / prod options
     const browser = await puppeteer.launch(options);
-
     const page = await browser.newPage();
 
     // set the viewport size

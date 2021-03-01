@@ -26,8 +26,16 @@ body {
   padding: 2rem;
 }
 
+.logo {
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 2rem;
+}
+
 .heading {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-top: 0;
   font-weight: 400;
   margin-bottom: 2rem;
@@ -35,7 +43,7 @@ body {
 }
 
 .subheading {
-  font-size: 2rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   margin-bottom: 4rem;
   font-weight: 400;
