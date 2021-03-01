@@ -57,6 +57,9 @@ body {
   text-align: center;
   color: var(--color-foreground);
   transition: all 0.2s ease-in-out;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 0.25rem;
 }
 
 .viewOnGitHub:hover {
@@ -174,6 +177,30 @@ body {
 .double-bounce2 {
   -webkit-animation-delay: -1s;
   animation-delay: -1s;
+}
+
+.footerLink {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.footerLink:hover {
+  color: var(--color-secondary);
+}
+
+.footerLink:focus {
+  outline-width: 0;
+  box-shadow: var(--color-primary) 0 0 0 0.25rem;
+  transition: box-shadow 0.2s ease 0s;
 }
 
 @-webkit-keyframes sk-bounce {
